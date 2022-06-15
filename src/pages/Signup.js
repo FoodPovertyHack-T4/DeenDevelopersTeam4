@@ -46,9 +46,12 @@ export default function SignUp() {
       email: data.get("email"),
       password: data.get("password"),
     });
+
     signUp(data.get("email"), data.get("password")).then(x => {
       navigate('/dashboard');
       console.log("user has signed up")
+    }).catch(error => {
+      console.log("error signing up")
     })
 
   };
