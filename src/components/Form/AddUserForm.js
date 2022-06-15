@@ -1,6 +1,6 @@
 import { Box, Button, Card, CardContent, CircularProgress, Grid, IconButton, Paper, Step, StepLabel, Stepper, TextField } from '@mui/material';
 import React, { useState, useEffect, useRef } from 'react'
-import {db} from "../Utils/firebase"
+import {db} from "../../Utils/firebase"
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { Formik, Form, Field, FieldArray, useFormik } from 'formik';
 
