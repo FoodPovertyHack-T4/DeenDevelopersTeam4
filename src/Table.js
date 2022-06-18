@@ -7,14 +7,6 @@ import { calculate_age } from "./Utils/helperfunctions";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70, hide: true },
-  { field: "firstName", headerName: "First name", width: 130 },
-  { field: "lastName", headerName: "Last name", width: 130 },
-  {
-    field: "dob",
-    headerName: "Age",
-    type: "number",
-    width: 90,
-  },
   {
     field: "fullName",
     headerName: "Full name",
@@ -23,9 +15,36 @@ const columns = [
     width: 160,
     valueGetter: (params) =>
       `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+    flex: 2
+  },
+  {
+    field: "dob",
+    headerName: "Age",
+    type: "number",
+    width: 90,
+    flex: 1 
+  },
+  {
+    field: "provision",
+    headerName: "Provision",
+    width: 90,
+    flex: 2 
+  },
+  {
+    field: "camp",
+    headerName: "Camp",
+    width: 90,
+    flex: 2 
+  },
+  {
+    field: "date",
+    headerName: "Date",
+    width: 90,
+    flex: 2 
   },
   {
     field: "view",
+    flex: 1, 
     headerName: "View/Edit",
     renderCell: (params) => {
       const onClick = (e) => {
@@ -62,6 +81,9 @@ const DataTable = ({ data }) => {
     firstName: row.firstName,
     lastName: row.lastName,
     dob: calculate_age(row.DOB),
+    camp: row.campName != null ? row.campName : "One Nation",
+    provision: row.provisionName != null ? row.provisionName : "Food Parcel",
+    date: row.date != null ? row.date : new Date(),
   }));
 
 
