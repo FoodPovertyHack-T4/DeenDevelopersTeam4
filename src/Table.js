@@ -56,7 +56,6 @@ const columns = [
 const DataTable = ({ data }) => {
   const [rowsState, setRowsState] = useState([]);
 
-  console.log(data);
 
   const newRow = data.map((row) => ({
     id: row.id,

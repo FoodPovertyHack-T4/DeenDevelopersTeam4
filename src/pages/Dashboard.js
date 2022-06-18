@@ -6,46 +6,36 @@ import Box from "@mui/material/Box";
 import AddUsersModal from "../components/Modal/AddUsers";
 import DataTable from "../Table";
 import {
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Stack,
 } from "@mui/material";
-import PersonIcon from "@mui/icons-material/Person";
-import GroupIcon from "@mui/icons-material/Group";
-import Badge from "@mui/material/Badge";
-import { styled } from "@mui/material/styles";
-import UpdateProvisionsModal from "../components/Modal/UpdateProvisions";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 import getAllUsers from "../Utils/databaseAccessor";
 
-
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
-    right: -15,
-    top: 23,
-    border: `0px solid ${theme.palette.background.paper}`,
-    padding: "0 4px",
-  },
-}));
-
 export default function Dashboard() {
-  const [alignment, setAlignment] = React.useState("left");
-  const [users, setUsers] = useState([]);
-
-  const handleAlignment = (event, newAlignment) => {
-    setAlignment(newAlignment);
+  const [currentFilter, setCurrentFilter] = useState("");
+  
+  //Users here should be renamed to notifications
+  const [notifications, setNotifications] = useState([]);
+  const [allNotifications, setAllNotifications] = useState([]);
+  
+  const handleDashboardFilter = (_, filter) => {
+    let _filter = filter === null ? "" : filter;
+    setCurrentFilter(_filter);
+    console.log(_filter);
+    // Filter data based on all users
+    // const _notifications = allNotifications.filter(notification => notificaton.provisionName.includes(filter))
+    // setUsers(_notifications)
   };
 
   useEffect(() => {
-    const getUsers = async() => {
-      let _users = await getAllUsers();
-      setUsers(_users);
+    const getNotifications = async() => {
+      let _notifications = await getAllUsers();
+      setAllNotifications(_notifications);
+      setNotifications(_notifications);
     }
-    getUsers();
+    getNotifications();
 
   }, [])
   
@@ -53,38 +43,40 @@ export default function Dashboard() {
     <Container maxWidth="lg">
       <Box sx={{ my: 4 }}>
         <Stack spacing={2} direction="row">
-          <StyledBadge badgeContent={4} color="error">
             <Typography variant="h4" component="h1" gutterBottom>
               Next two weeks
             </Typography>
-          </StyledBadge>
         </Stack>
 
         <ToggleButtonGroup
-          value={alignment}
+          value={currentFilter}
           exclusive
-          onChange={handleAlignment}
+          onChange={handleDashboardFilter}
           aria-label="text alignment"
+          size="small"
           sx={{ maxHeight: 50}}
         >
-          <ToggleButton value="left" aria-label="left aligned">
+          <ToggleButton value="food" aria-label="left aligned">
             <h4>Food</h4>
           </ToggleButton>
-          <ToggleButton value="center" aria-label="centered">
+          <ToggleButton value="hygeine" aria-label="centered">
             <h4>Hygeine </h4>
           </ToggleButton>
-          <ToggleButton value="right" aria-label="right aligned">
+          <ToggleButton value="abaya" aria-label="right aligned">
             <h4>Abaya</h4>
           </ToggleButton>
-          <ToggleButton value="justify" aria-label="justified">
+          <ToggleButton value="baby-powder" aria-label="justified">
             <h4>Baby Powedr</h4>
           </ToggleButton>
-          <ToggleButton value="justify" aria-label="justified">
+          <ToggleButton value="camps" aria-label="justified">
             <h4>Camps</h4>
+          </ToggleButton>
+          <ToggleButton value="eid-gift" aria-label="justified">
+            <h4>Eid Gift</h4>
           </ToggleButton>
         </ToggleButtonGroup>
 
-        <DataTable data={users}/>
+        <DataTable data={notifications}/>
       </Box>
 
       <Box sx={{ my: 4 }}>
