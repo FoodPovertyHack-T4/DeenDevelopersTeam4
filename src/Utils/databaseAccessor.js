@@ -8,4 +8,11 @@ const getAllUsers = async () => {
     return users;
 };
 
-export default getAllUsers;
+const getAllCamps = async () => {
+    const camps =  await fetch("https://deen-developers-team4.herokuapp.com/user").then(
+        (response) => response.json()
+    );
+    return camps;
+}
+
+export {getAllUsers, getAllCamps};
