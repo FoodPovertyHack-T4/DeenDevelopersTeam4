@@ -105,8 +105,10 @@ export default function Dashboard() {
                 <h4>Eid Gift</h4>
               </ToggleButton>
             </ToggleButtonGroup>
-
             <DataTable data={notifications} />
+            <Stack direction="row" spacing={2} sx={{ my: 4}}>
+              <AddUsersModal />
+            </Stack>
           </Box>
         </>
       )}
