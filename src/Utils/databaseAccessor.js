@@ -24,6 +24,14 @@ const getAllProvisions = async() => {
     return provisions;
 }
 
+const getFamilies = async(familyId) => {
+    const provisions =  await fetch(`https://deen-developers-team4.herokuapp.com/users?id=${familyId}`).then(
+        (response) => response.json()
+    );
+    console.log("got the family in the backend", provisions)
+    return provisions;
+}
+
 const addProvisionToUser = async(jsonObj) => {
     const rawResponse = await fetch("https://deen-developers-team4.herokuapp.com/provision/add", {
         method: 'POST',
@@ -77,4 +85,4 @@ const content = await rawResponse.json();
 return content
 }
 
-export {getAllUsers, getAllCamps,getAllProvisions,addProvisionToUser, addUsers};
+export {getAllUsers, getAllCamps,getAllProvisions,addProvisionToUser, addUsers,getFamilies};

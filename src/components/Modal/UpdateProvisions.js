@@ -48,6 +48,7 @@ export default function UpdateProvisionsModal({ data, userId }) {
     }
     addProvisionToUser(jsonObj).then(x => {
       console.log("added new data")
+      handleClose()
     })
   }
 

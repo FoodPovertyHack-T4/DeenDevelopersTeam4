@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import AddUserForm from '../Form/AddUserForm';
 import { Divider } from '@mui/material';
+import {getFamilies} from "../../Utils/databaseAccessor"
 
 const style = {
   position: 'absolute',
@@ -18,17 +19,27 @@ const style = {
   p: 4,
 };
 
-export default function FamilySummaryModal() {
-  const [open, setOpen] = React.useState(false);
+export default function FamilySummaryModal({handleModal,fId, toggleModal}) {
+  console.log("familyid is ". fId)
+  const [open, setOpen] = React.useState(handleModal);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [family, setFamily] = React.useState([])
+
+  React.useEffect(() => {
+    const getFamilyDetails = async () => {
+      getFamilies(familyId).then(x => {
+        console.log("got the family", x)
+      })
+    }
+    getFamilyDetails()
+  },[fId])
 
   return (
     <div>
-      <Button onClick={handleOpen} variant="contained">View</Button>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={handleModal}
+        onClose={toggleModal}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
