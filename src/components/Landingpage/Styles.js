@@ -3,12 +3,9 @@ import { makeStyles } from "@mui/styles";
 const styles = (theme) => {
   return {
     toolBar: {
-      height: "10vh",
       display: "flex",
       textAlign: "right",
-      padding: "20px",
       backgroundColor: "white",
-      alignItems: "center",
     },
     logo: {
       color: "43A047",
@@ -31,7 +28,10 @@ const styles = (theme) => {
       paddingBottom: "30px",
     },
     largeImage: {
-      width: "80%",
+      width: "100%",
+    },
+    logoImage: {
+      width: "10rem",
     },
     sectionGridContainer: {
       display: "flex",

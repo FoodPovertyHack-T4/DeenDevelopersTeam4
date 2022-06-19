@@ -9,17 +9,16 @@ const Footer = () => {
   return (
     <Box sx={{ flexGrow: 1 }} className={classes.footerContainer}>
       <Typography className={classes.footerText}>
-        Provided by{" "}
+        Provided by Adam, Ahmed, Cybel, Yosof and Zameer
+      </Typography>
+      <Typography className={classes.footerDate}>
         <Link
           href="https://foodpovertyhack.deendevelopers.com/"
           target="_blank"
           underline="none"
         >
-          DeenDevelopers
+          Deen Developers - Hack for Food Poverty
         </Link>
-      </Typography>
-      <Typography className={classes.footerDate}>
-        Team 4 - Hack for Food Poverty
       </Typography>
     </Box>
   );
