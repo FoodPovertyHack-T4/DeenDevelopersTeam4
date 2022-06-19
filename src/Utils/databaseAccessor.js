@@ -1,6 +1,8 @@
+const API_BASE = "https://deen-developers-team4.herokuapp.com"
+
 const getAllUsers = async () => {
   
-    const users =  await fetch("https://deen-developers-team4.herokuapp.com/user").then(
+    const users =  await fetch(`${API_BASE}/user`).then(
     (response) => response.json());
 
     console.log(users);
@@ -9,10 +11,23 @@ const getAllUsers = async () => {
 };
 
 const getAllCamps = async () => {
-    const camps =  await fetch("https://deen-developers-team4.herokuapp.com/user").then(
+    const camps =  await fetch(`${API_BASE}/user`).then(
         (response) => response.json()
     );
     return camps;
 }
 
-export {getAllUsers, getAllCamps};
+const addUsers = async (users) => {
+    const rawResponse = await fetch(`${API_BASE}/users`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(users)
+  });
+  const content = await rawResponse.json();
+  return content
+}
+
+export {getAllUsers, getAllCamps, addUsers};

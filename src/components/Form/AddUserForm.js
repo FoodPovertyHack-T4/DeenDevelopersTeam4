@@ -15,6 +15,8 @@ import { db } from "../../Utils/firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore";
 import { Formik, Form, Field, FieldArray, useFormik } from "formik";
 import DeleteIcon from '@mui/icons-material/Delete';
+import { addUsers } from "../../Utils/databaseAccessor";
+
 
 const AddUserForm = ({ modalToggle }) => {
   const stepperArray = ["Personal Information", "Dependants", "More Info"];
@@ -29,7 +31,7 @@ const AddUserForm = ({ modalToggle }) => {
       mainFirstName: "",
       mainLastName: "",
       mainAge: new Date(),
-      camp: "",
+      campName: "",
       dependants: [
         {
           firstName: "",
@@ -70,10 +72,9 @@ const AddUserForm = ({ modalToggle }) => {
         }}
         onSubmit={async (values, helpers) => {
           if (isLastStep()) {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 400);
+            setSubmitting(false);
+            alert(values);
+            // addUsers(values);
           } else {
             setStep((s) => s + 1);
             helpers.setTouched({});
@@ -133,10 +134,10 @@ const AddUserForm = ({ modalToggle }) => {
                 <Box paddingBottom={2} paddingTop={2}>
                   <TextField
                     fullWidth
-                    id="camp"
-                    name="camp"
+                    id="campName"
+                    name="campName"
                     label="Camp"
-                    value={formik.values.camp}
+                    value={formik.values.campName}
                     onChange={formik.handleChange}
                   />
                 </Box>
