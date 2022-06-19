@@ -126,7 +126,7 @@ export default function Dashboard() {
       )}
 
       {tab == 1 && (
-        <Delivery data={users}/>
+        <Delivery data={notifications}/>
       )}
 
     </Container>
