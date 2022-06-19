@@ -65,7 +65,7 @@ const addNotificationForPackage = async (theData) => {
 }
 
 const addUsers = async (users) => {
-  const rawResponse = await fetch(`${API_BASE}/users`, {
+  const rawResponse = await fetch(`${API_BASE}/family`, {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
@@ -74,6 +74,7 @@ const addUsers = async (users) => {
   body: JSON.stringify(users)
 });
 const content = await rawResponse.json();
+console.log(content)
 return content
 }
 
