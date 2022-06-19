@@ -36,7 +36,8 @@ const AddUserForm = ({ modalToggle }) => {
         {
           firstName: "",
           lastName: "",
-          dob: new Date(),
+          DOB: new Date()
+
         },
       ],
       description: "",
@@ -174,8 +175,8 @@ const AddUserForm = ({ modalToggle }) => {
                             <Box paddingTop={2} paddingBottom={2} marginX={1}>
                               <TextField
                                 fullWidth
-                                id={`dependants.${index}.dob`}
-                                name={`dependants.${index}.dob`}
+                                id={`dependants.${index}.DOB`}
+                                name={`dependants.${index}.DOB`}
                                 type="number"
                                 label="Age"
                                 onChange={formik.handleChange}

@@ -4,6 +4,7 @@ import { collection, getDocs, addDoc } from "firebase/firestore";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import { calculate_age } from "./Utils/helperfunctions";
+import FamilySummaryModal from "./components/Modal/FamilySummary";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70, hide: true },
@@ -43,9 +44,9 @@ const columns = [
     flex: 2 
   },
   {
-    field: "view",
+    field: "details",
     flex: 1, 
-    headerName: "View/Edit",
+    headerName: "Details",
     renderCell: (params) => {
       const onClick = (e) => {
         e.stopPropagation(); // don't select this row after clicking
@@ -64,9 +65,7 @@ const columns = [
       };
 
       return (
-        <Button variant="contained" onClick={onClick}>
-          View
-        </Button>
+        <FamilySummaryModal/>
       );
     },
   },
