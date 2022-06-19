@@ -1,16 +1,19 @@
-import { Container, Button, Stack } from "@mui/material";
+import { Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import Hero from "../components/Landingpage/Hero";
+import Header from "../components/Landingpage/Header";
+import Section from "../components/Landingpage/Section";
+import Footer from "../components/Landingpage/Footer";
 
 const LandingPage = () => {
   let navigate = useNavigate();
 
   return (
     <Container>
-      <Stack>
-        <Button onClick={() => navigate("/dashboard")}>Go to Dashboard </Button>
-        <Button onClick={() => navigate("/signin")}>Go to Sign In</Button>
-        <Button onClick={() => navigate("/signup")}>Go to Sign Up</Button>
-      </Stack>
+      <Header />
+      <Hero />
+      <Section />
+      <Footer />
     </Container>
   );
 };
