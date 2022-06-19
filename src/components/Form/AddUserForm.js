@@ -44,9 +44,9 @@ const AddUserForm = ({ modalToggle }) => {
     },
     onSubmit: async (values) => {
       if (isLastStep()) {
-        alert(JSON.stringify(values));
-        setSubmitting(false);
         modalToggle();
+        addUsers(values);
+        setSubmitting(false);
       } else {
         setStep((s) => s + 1);
         helpers.setTouched({});
@@ -73,9 +73,9 @@ const AddUserForm = ({ modalToggle }) => {
         }}
         onSubmit={async (values, helpers) => {
           if (isLastStep()) {
+            modalToggle();
+            addUsers(values);
             setSubmitting(false);
-            alert(values);
-            // addUsers(values);
           } else {
             setStep((s) => s + 1);
             helpers.setTouched({});
