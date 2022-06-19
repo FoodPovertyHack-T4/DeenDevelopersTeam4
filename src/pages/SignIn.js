@@ -45,7 +45,6 @@ export default function SignIn() {
 
     signIn(data.get("email"), data.get("password")).then(x => {
       navigate('/dashboard');
-      console.log("user has logged in")
     }).catch(error => {
       console.log("error logging in")
     })

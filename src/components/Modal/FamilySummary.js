@@ -13,37 +13,39 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: '90%',
   bgcolor: 'background.paper',
-  maxHeight: '90%',
   // border: '2px solid #000',
-  // boxShadow: 24,
+  boxShadow: 24,
   p: 4,
 };
 
-export default function AddUsersModal() {
+export default function FamilySummaryModal() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <Button onClick={handleOpen} variant="contained">Add User</Button>
+      <Button onClick={handleOpen} variant="contained">View</Button>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
+
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Adding a new user to the system
+            Family Overview
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Please correctly fill out all the required fields
-          </Typography>
+          {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Please enter which refugees have received a
+          </Typography> */}
           <Box sx={{my:2}}>
-          <AddUserForm modalToggle={handleClose}/>
+          <h1>Hello World</h1>
           </Box>
         </Box>
+
+
       </Modal>
     </div>
   );
