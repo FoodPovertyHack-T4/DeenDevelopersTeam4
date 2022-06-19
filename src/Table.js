@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { db } from "./Utils/firebase";
-import { collection, getDocs, addDoc } from "firebase/firestore";
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import { calculate_age } from "./Utils/helperfunctions";

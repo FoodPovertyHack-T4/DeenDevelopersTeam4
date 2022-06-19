@@ -26,6 +26,11 @@ const AddUserForm = ({ modalToggle }) => {
 
   const userCollectionRef = collection(db, "users");
 
+  const handleSubmit = async(values) => {
+    const result = await addUsers(values);
+    console.log(result);
+  }
+
   const formik = useFormik({
     initialValues: {
       mainFirstName: "",
@@ -44,9 +49,10 @@ const AddUserForm = ({ modalToggle }) => {
     },
     onSubmit: async (values) => {
       if (isLastStep()) {
-        alert(JSON.stringify(values));
-        setSubmitting(false);
         modalToggle();
+        handleSubmit(values);
+        setSubmitting(false);
+        
       } else {
         setStep((s) => s + 1);
         helpers.setTouched({});
@@ -73,9 +79,9 @@ const AddUserForm = ({ modalToggle }) => {
         }}
         onSubmit={async (values, helpers) => {
           if (isLastStep()) {
+            modalToggle();
             setSubmitting(false);
-            alert(values);
-            // addUsers(values);
+            handleSubmit(values);
           } else {
             setStep((s) => s + 1);
             helpers.setTouched({});
