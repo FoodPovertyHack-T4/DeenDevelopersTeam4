@@ -30,15 +30,15 @@ const Delivery = ({ data }) => {
                 {data.map((value) => {
                     const labelId = `checkbox-list-secondary-label-${value}`;
                     return (
-                        <ListItem
-                            key={value}
+                        <ListItem sx={{ my: 1}}
+                            key={value.entityId}
                             secondaryAction={
                                <UpdateProvisionsModal data={provisions} userId={value.familyId}/>
                             }
                             disablePadding
                         >
                             <ListItemButton>
-                                <ListItemText id={labelId} primary={`${value.firstName} ${value.lastName}`} />
+                                <ListItemText id={labelId} primary={`${value.familyName} family`} />
                             </ListItemButton>
                         </ListItem>
                     );

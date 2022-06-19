@@ -37,7 +37,6 @@ const addProvisionToUser = async (jsonObj) => {
     }
   );
   rawResponse.json().then((obj) => {
-    console.log(obj);
     const notifyJson = {
       familyId: obj.userId,
       provisionId: obj.provisionId,
@@ -89,7 +88,6 @@ const getAllNotifications = async () => {
   const notifications = await fetch(`${API_BASE}/notifications`).then(
     (response) => response.json()
   );
-  console.log(JSON.stringify(notifications));
   return notifications;
 };
 
