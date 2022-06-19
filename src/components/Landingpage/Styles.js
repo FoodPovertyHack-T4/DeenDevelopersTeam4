@@ -31,7 +31,7 @@ const styles = (theme) => {
       width: "100%",
     },
     logoImage: {
-      width: "10rem",
+      width: "5rem",
     },
     sectionGridContainer: {
       display: "flex",

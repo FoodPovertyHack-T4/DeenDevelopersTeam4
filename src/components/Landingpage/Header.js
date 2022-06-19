@@ -63,7 +63,7 @@ const Header = (props) => {
             style={{
               display: "flex",
               justifyContent: "center",
-              paddingLeft: "9%",
+              paddingLeft: "10%",
             }}
           >
             <Link href="/" underline="none">
