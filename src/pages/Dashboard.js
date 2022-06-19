@@ -7,7 +7,19 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import AddUsersModal from "../components/Modal/AddUsers";
 import DataTable from "../Table";
-import { Stack } from "@mui/material";
+import Delivery from "./Delivery"
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Stack,
+} from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
+import GroupIcon from "@mui/icons-material/Group";
+import Badge from "@mui/material/Badge";
+import { styled } from "@mui/material/styles";
+import UpdateProvisionsModal from "../components/Modal/UpdateProvisions";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
@@ -112,6 +124,11 @@ export default function Dashboard() {
           </Box>
         </>
       )}
+
+      {tab == 1 && (
+        <Delivery data={users}/>
+      )}
+
     </Container>
   );
 }
