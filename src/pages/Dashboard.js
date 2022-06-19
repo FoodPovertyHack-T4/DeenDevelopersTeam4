@@ -7,6 +7,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import AddUsersModal from "../components/Modal/AddUsers";
 import DataTable from "../Table";
+import Delivery from "./Delivery"
 import {
   List,
   ListItem,
@@ -124,6 +125,10 @@ export default function Dashboard() {
             </Box>
           </Box>
         </>
+      )}
+
+      {tab == 1 && (
+        <Delivery data={users}/>
       )}
 
     </Container>
