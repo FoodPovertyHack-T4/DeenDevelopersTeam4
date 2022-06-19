@@ -9,21 +9,13 @@ import AddUsersModal from "../components/Modal/AddUsers";
 import DataTable from "../Table";
 import Delivery from "./Delivery"
 import {
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Stack,
 } from "@mui/material";
-import PersonIcon from "@mui/icons-material/Person";
-import GroupIcon from "@mui/icons-material/Group";
-import Badge from "@mui/material/Badge";
-import { styled } from "@mui/material/styles";
 import UpdateProvisionsModal from "../components/Modal/UpdateProvisions";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
-import { getAllUsers, getAllCamps } from "../Utils/databaseAccessor";
+import { getAllCamps, getAllNotifications } from "../Utils/databaseAccessor";
 
 export default function Dashboard() {
   const [currentFilter, setCurrentFilter] = useState("");
@@ -49,15 +41,14 @@ export default function Dashboard() {
   const handleDashboardFilter = (_, filter) => {
     let _filter = filter === null ? "" : filter;
     setCurrentFilter(_filter);
-    console.log(_filter);
     // Filter data based on all users
-    // const _notifications = allNotifications.filter(notification => notificaton.provisionName.includes(filter))
-    // setUsers(_notifications)
+    const _notifications = allNotifications.filter(n => n.provisionName.toLowerCase().includes(_filter));
+    setNotifications(_notifications);
   };
 
   useEffect(() => {
     const getNotifications = async () => {
-      let _notifications = await getAllUsers();
+      let _notifications = await getAllNotifications();
       setAllNotifications(_notifications);
       setNotifications(_notifications);
     };
@@ -107,13 +98,10 @@ export default function Dashboard() {
               <ToggleButton value="abaya" aria-label="right aligned">
                 <h4>Abaya</h4>
               </ToggleButton>
-              <ToggleButton value="baby-powder" aria-label="justified">
+              <ToggleButton value="baby powder" aria-label="justified">
                 <h4>Baby Powedr</h4>
               </ToggleButton>
-              <ToggleButton value="camps" aria-label="justified">
-                <h4>Camps</h4>
-              </ToggleButton>
-              <ToggleButton value="eid-gift" aria-label="justified">
+              <ToggleButton value="eid gift" aria-label="justified">
                 <h4>Eid Gift</h4>
               </ToggleButton>
             </ToggleButtonGroup>
