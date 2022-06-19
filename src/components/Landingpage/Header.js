@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import useStyles from "./Styles";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import wahidlogo from "../../images/wahidlogo.png";
 
 function ElevationScroll(props) {
   const { children, window } = props;
@@ -56,16 +57,21 @@ const Header = (props) => {
   return (
     <Box sx={{ marginBottom: "70px" }}>
       <ElevationScroll {...props}>
-        <AppBar>
-          <Toolbar className={classes.toolBar}>
-            <Link href="#" underline="none">
-              <Typography
-                variant="h2"
-                className={classes.logo}
-                sx={{ flexGrow: 1, alignSelf: "flex-end" }}
-              >
-                واحد
-              </Typography>
+        <AppBar className={classes.appBar}>
+          <Toolbar
+            className={classes.toolBar}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              paddingLeft: "10%",
+            }}
+          >
+            <Link href="/" underline="none">
+              <img
+                src={wahidlogo}
+                alt="My Team"
+                className={classes.logoImage}
+              />
             </Link>
 
             {matches ? (

@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Typography, Button, Box } from "@mui/material";
-import lebanon from "../../images/lebanon.jpg";
+import humanitarian from "../../images/humanitarian.svg";
 import useStyles from "./Styles";
 import { useNavigate } from "react-router-dom";
 
@@ -26,7 +26,11 @@ const Hero = () => {
           </Button>
         </Grid>
         <Grid item xs={12} md={5}>
-          <img src={lebanon} alt="My Team" className={classes.largeImage} />
+          <img
+            src={humanitarian}
+            alt="My Team"
+            className={classes.largeImage}
+          />
         </Grid>
       </Grid>
     </Box>
